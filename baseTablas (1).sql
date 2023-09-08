@@ -26,9 +26,14 @@ CREATE TABLE `clientes` (
   `idclientes` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `cc` varchar(45) NOT NULL,
+  `edad` int NOT NULL,
+  `correo` varchar(1000) NOT NULL,
+  `celular` varchar(1000) NOT NULL,
   PRIMARY KEY (`idclientes`),
-  UNIQUE KEY `cc_UNIQUE` (`cc`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
+  UNIQUE KEY `cc_UNIQUE` (`cc`),
+  UNIQUE KEY `correo_UNIQUE` (`correo`),
+  UNIQUE KEY `celular_UNIQUE` (`celular`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +42,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (13,'Carla','1234667989'),(14,'Andrea','1234689989'),(15,'Marcela','1334337989'),(16,'Peter','1334887989'),(17,'Catalina','13533989'),(18,'Karina','1355333989');
+INSERT INTO `clientes` VALUES (1,'Carla','1234667989',55,'n@gmail.com','3154789999'),(2,'Andrea','1234689989',23,'m@gmail.com','3154789888'),(3,'Marcela','1334337989',30,'p@gmail.com','3154789777'),(4,'Peter','1334887989',25,'q@gmail.com','3154789789'),(5,'Catalina','13533989',60,'o@gmail.com','31547897845'),(6,'Karina','1355333989',35,'k@gmail.com','3125475826');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,8 +57,11 @@ CREATE TABLE `empleado` (
   `idEmpleado` int NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(45) NOT NULL,
   `CC` varchar(45) NOT NULL,
+  `Edad` int NOT NULL,
+  `celular` varchar(1000) NOT NULL,
   PRIMARY KEY (`idEmpleado`),
-  UNIQUE KEY `CC_UNIQUE` (`CC`)
+  UNIQUE KEY `CC_UNIQUE` (`CC`),
+  UNIQUE KEY `celular_UNIQUE` (`celular`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -63,7 +71,7 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-INSERT INTO `empleado` VALUES (1,'Jairo','1234667989'),(2,'Andres','1234687989'),(3,'Maria','1334667989'),(4,'Mario','13349967989'),(5,'Pedro','1355667989');
+INSERT INTO `empleado` VALUES (1,'Jairo','1234667989',25,'3112153030'),(2,'Andres','1234687989',26,'3112501331'),(3,'Maria','1334667989',27,'3124756998'),(4,'Mario','13349967989',42,'3124789969'),(5,'Pedro','1355667989',35,'3457895656');
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +122,7 @@ CREATE TABLE `ventas` (
   CONSTRAINT `fk_ventas_clientes` FOREIGN KEY (`clientes_idclientes`) REFERENCES `clientes` (`idclientes`),
   CONSTRAINT `fk_ventas_Empleado1` FOREIGN KEY (`Empleado_idEmpleado`) REFERENCES `empleado` (`idEmpleado`),
   CONSTRAINT `fk_ventas_TipoSeguro1` FOREIGN KEY (`TipoSeguro_idTipoSeguro`) REFERENCES `tiposeguro` (`idTipoSeguro`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +131,7 @@ CREATE TABLE `ventas` (
 
 LOCK TABLES `ventas` WRITE;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
-INSERT INTO `ventas` VALUES (7,14,2,3,'2023-12-23 00:00:00','2024-12-24 00:00:00',1),(11,14,3,5,'2020-10-23 00:00:00','2020-10-24 00:00:00',1),(12,15,2,5,'2024-09-23 00:00:00','2024-09-24 00:00:00',1),(13,17,1,2,'2024-09-23 00:00:00','2024-09-24 00:00:00',1),(14,14,NULL,3,NULL,NULL,0),(15,15,NULL,2,NULL,NULL,0),(16,17,NULL,1,NULL,NULL,0);
+INSERT INTO `ventas` VALUES (1,1,2,3,'2023-12-23 00:00:00','2024-12-24 00:00:00',1),(2,3,2,3,'2024-11-23 00:00:00','2024-11-24 00:00:00',1),(3,2,3,5,'2020-10-23 00:00:00','2020-10-24 00:00:00',1),(4,5,2,5,'2024-09-23 00:00:00','2024-09-24 00:00:00',1),(5,3,1,2,'2024-09-23 00:00:00','2024-09-24 00:00:00',1),(6,1,NULL,3,NULL,NULL,0),(7,5,NULL,2,NULL,NULL,0),(8,3,NULL,1,NULL,NULL,0);
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -136,4 +144,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-07 20:19:15
+-- Dump completed on 2023-09-07 20:59:02
