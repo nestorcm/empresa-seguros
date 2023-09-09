@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 var connection = new mysqlconfig(builder.Configuration.GetConnectionString("mysqlconnection"));
 builder.Services.AddSingleton(connection);
 builder.Services.AddScoped<IclienteRepositorio,ClienteRepositorio>();
+builder.Services.AddScoped<IEmpleadoRepositorio, EmpleadoRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
