@@ -1,4 +1,5 @@
 using data;
+using data.repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var connection = new mysqlconfig(builder.Configuration.GetConnectionString("mysqlconnection"));
+builder.Services.AddSingleton(connection);
+builder.Services.AddScoped<IclienteRepositorio,ClienteRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
