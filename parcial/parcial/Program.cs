@@ -13,6 +13,7 @@ var connection = new mysqlconfig(builder.Configuration.GetConnectionString("mysq
 builder.Services.AddSingleton(connection);
 builder.Services.AddScoped<IclienteRepositorio,ClienteRepositorio>();
 builder.Services.AddScoped<IEmpleadoRepositorio, EmpleadoRepositorio>();
+builder.Services.AddScoped<IVentasRepositorio, VentasRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

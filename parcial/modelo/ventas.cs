@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace modelo
 {
-    internal class ventas
+    public class ventas
     {
+        public int id { get; set; }
+        public int idcliente { get; set; }
+        public int tiposeguro { get; set; }
+        public int idempleado { get; set; }
+        public string fechaInicioSeguro { get; set; }
+        public string fechaFinalSeguro { get; set; }
+        public bool venta { get; set; }
     }
 }
